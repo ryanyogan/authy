@@ -1,4 +1,5 @@
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import { BackButton } from "./back-button";
 import { Header } from "./header";
 import { Social } from "./social";
 
@@ -24,11 +25,15 @@ export function CardWrapper({
       </CardHeader>
       <CardContent>{children}</CardContent>
 
-      {showSocial && (
+      {showSocial ? (
         <CardFooter>
           <Social />
         </CardFooter>
-      )}
+      ) : null}
+
+      <CardFooter>
+        <BackButton href={backButtonHref} label={backButtonLabel} />
+      </CardFooter>
     </Card>
   );
 }

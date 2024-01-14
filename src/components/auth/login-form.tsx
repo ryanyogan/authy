@@ -4,6 +4,8 @@ import { LoginSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { FormError } from "../form-error";
+import { FormSuccess } from "../form-success";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -25,6 +27,10 @@ export function LoginForm() {
     },
   });
 
+  function onSubmit(values: z.infer<typeof LoginSchema>) {
+    console.log(values);
+  }
+
   return (
     <CardWrapper
       headerLabel="Welcome back"
@@ -33,7 +39,7 @@ export function LoginForm() {
       showSocial
     >
       <Form {...form}>
-        <form className="space-y-6" onSubmit={form.handleSubmit(() => {})}>
+        <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <div className="space-y-4">
             <FormField
               control={form.control}
@@ -67,6 +73,9 @@ export function LoginForm() {
               )}
             />
           </div>
+
+          <FormError message="" />
+          <FormSuccess message="" />
 
           <Button type="submit" className="w-full">
             Login

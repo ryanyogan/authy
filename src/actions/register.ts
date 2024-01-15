@@ -11,4 +11,5 @@ export async function register(values: z.infer<typeof RegisterSchema>) {
   }
 
   const { email, password, name } = validatedFields.data;
+  return { success: "Email Sent" };
 }

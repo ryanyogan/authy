@@ -37,12 +37,12 @@ export function LoginForm() {
     setError("");
     setSuccess("");
 
-    startTransition(() => {
+    startTransition(() =>
       login(values).then((data) => {
         setError(data.error);
         setSuccess(data.success);
-      });
-    });
+      })
+    );
   }
 
   return (
